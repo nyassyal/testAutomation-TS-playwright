@@ -1,5 +1,5 @@
 class UserProfiles{
-    private password:string
+    private readonly password:string //Member 'password' is never reassigned; mark it as `readonly`.
 
     constructor(password:string){
         this.password = password

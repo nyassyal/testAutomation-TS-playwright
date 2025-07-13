@@ -26,4 +26,4 @@ class UserProfilessSub extends UserProfiless{
 }
 
 const c1 = new UserProfilessSub('Tester@Test.com')
-c1.printEmail;
+c1.printEmail();

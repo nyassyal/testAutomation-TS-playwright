@@ -1,6 +1,6 @@
 class UserProfile{
     public name: string
-    private password: string
+    private readonly password: string //Member 'password' is never reassigned; mark it as `readonly`.
     protected email: string
 
     constructor (name: string, password: string, email: string){
@@ -32,7 +32,7 @@ obj.showProfile()
  */
 
 class AdminProfile extends UserProfile{
-    private role: string
+    private readonly role: string
 
     constructor(name:string, password: string, email: string, role:string){
         super(name,password,email)
