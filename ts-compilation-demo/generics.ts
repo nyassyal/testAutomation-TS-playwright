@@ -38,3 +38,5 @@ const userResponse : ApiResponse<{name:string, age:number}> = {
         age: 30
     }
 };
+
+//Generics >> 'any' because it allows us to define a type that can be replaced with any type when the function is called, while 'any' loses type information and does not provide type safety.
