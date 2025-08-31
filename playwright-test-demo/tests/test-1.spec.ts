@@ -1,15 +1,34 @@
 import {test,expect} from '@playwright/test';
-import { TIMEOUT } from 'dns';
 
 test (`locator demo`,async({page})=>{
 
-    await page.goto(`http://127.0.0.1:5500/tests/shadowDOM.html`);
+    await page.goto(`http://127.0.0.1:5500/tests/dialog.html`);
+
+    // page.on(`dialog`,dialog=> dialog.accept());  //accept a dialog
+    // await page.getByText(`Show Alert`).click()
+
+    // page.on(`dialog`,dialog=> dialog.dismiss()); //dismiss a dialog
+    // await page.getByText(`Show Confirm`).click()
+
+    // print dialog - next line is more or less copy-paste
+    // await page.evaluate('(() => {window.waitForPrintDialog = new Promise(f => window.print = f);})()');
+    // await page.getByText('Print Page').click();
+
+    // await page.waitForFunction('window.waitForPrintDialog');
+
+        page.on('dialog', async dialog => {
+    if(dialog.type() === 'beforeunload')
+    await dialog.dismiss();
+    });
+    await page.close({ runBeforeUnload: true });
+    
+    // await page.goto(`http://127.0.0.1:550`0/tests/shadowDOM.html`);
     // const openShadowDOM = page.getByText(`Details (Open Shadow)`);
     // await openShadowDOM.click();
 
-    const closedShadowDOM = page.getByText(`Details (Closed Shadow)`);
-    await expect(closedShadowDOM).toBeVisible();
-    await closedShadowDOM.click();
+    // const closedShadowDOM = page.getByText(`Details (Closed Shadow)`);
+    // await expect(closedShadowDOM).toBeVisible();
+    // await closedShadowDOM.click();
 
     // await page.goto(`http://127.0.0.1:5500/tests/locators.html`);
     // // creating a locator
@@ -55,5 +74,16 @@ test (`locator demo`,async({page})=>{
     // await password.fill(`myPassword`)
     // await frame.getByRole(`button`, {name:`Login`}).click();
 
+    // filtering locators
+    // await page.getByRole('listitem').filter({hasText: `Product 2`}).getByRole('button', {name: `Add to Cart`}).click();
+    
+    //Negative Scenario - Not have text
+    // await expect(page.getByRole('listitem').filter({hasNotText: `Out of Stock`})).toHaveCount(2);
+
+    //Filter by child/descendant
+    // await page.getByRole('listitem').filter({hasText: `Product 2`}).getByRole('button', {name: `Add to Cart`}).click();
+
+    //Matching only visible elements
+    // await page.getByRole(`button`, {name: `Click Me`}).filter({visible: true}).click();
 });
 
