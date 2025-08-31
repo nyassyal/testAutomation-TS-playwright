@@ -2,20 +2,31 @@ import {test,expect} from '@playwright/test';
 import { TIMEOUT } from 'dns';
 
 test (`locator demo`,async({page})=>{
-    await page.goto(`http://127.0.0.1:5500/tests/locators.html`);
-    // creating a locator
-    // const clickMeButton = page.getByRole(`button`,{name:`Click Me`});
-    // await clickMeButton.click();
 
-    // const navElement = page.getByRole(`navigation`,{name:`Main Navigation`});
-    // navElement.isVisible();
-    // await page.getByPlaceholder(`Search here...`).fill(`Playwright`);
-    // await expect (page.getByText(`Welcome, John`)).toBeVisible();
-    // await expect(page.getByText(`Welcome, John`, {exact: true})).toBeVisible();
-    // await expect(page.getByText(/welcome, [A-Za-z]+$/i)).toBeVisible();
-    // await page.getByAltText(`Playwright Logo`).click();
-    // await expect(page.getByTitle(`More Info`)).toHaveText(`Hover over me`);
-    await expect(page.getByTestId(`submit-btn`)).toHaveText(`Submit Form`);
+    await page.goto(`http://127.0.0.1:5500/tests/shadowDOM.html`);
+    // const openShadowDOM = page.getByText(`Details (Open Shadow)`);
+    // await openShadowDOM.click();
+
+    const closedShadowDOM = page.getByText(`Details (Closed Shadow)`);
+    await expect(closedShadowDOM).toBeVisible();
+    await closedShadowDOM.click();
+
+    // await page.goto(`http://127.0.0.1:5500/tests/locators.html`);
+    // // creating a locator
+    // // const clickMeButton = page.getByRole(`button`,{name:`Click Me`});
+    // // await clickMeButton.click();
+
+    // // const navElement = page.getByRole(`navigation`,{name:`Main Navigation`});
+    // // navElement.isVisible();
+    // // await page.getByPlaceholder(`Search here...`).fill(`Playwright`);
+    // // await expect (page.getByText(`Welcome, John`)).toBeVisible();
+    // // await expect(page.getByText(`Welcome, John`, {exact: true})).toBeVisible();
+    // // await expect(page.getByText(/welcome, [A-Za-z]+$/i)).toBeVisible();
+    // // await page.getByAltText(`Playwright Logo`).click();
+    // // await expect(page.getByTitle(`More Info`)).toHaveText(`Hover over me`);
+    // // await expect(page.getByTestId(`submit-btn`)).toHaveText(`Submit Form`);
+    // // await page.locator(`//button[normalize-space()='Click Me']`).click();
+    // const cssLocator = page.locator(`button[role='button']`);
 
     //Locators in a form
     // await page.goto(`http://127.0.0.1:5500/tests/iframeApp.html`);
