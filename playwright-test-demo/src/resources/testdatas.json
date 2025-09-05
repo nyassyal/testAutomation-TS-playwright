@@ -1,0 +1,8 @@
+{
+    "base_url":"https://playwright.dev",
+    "user":{
+        "name": "Nyas",
+        "role": "SDET"
+    },
+    "ids": [101, 102, 103]
+}
