@@ -37,7 +37,7 @@ export function getJsonObject(key:string) :Record<string,any>{
 
     const value = testData[key];
     if(typeof value !=="object" || Array.isArray(value)){
-        throw new Error(`Key ${key} does not contain a JSON Object`)
+        throw new Error(`Key ${key} does not contain a JSON Object`);
     }
 
     return value;

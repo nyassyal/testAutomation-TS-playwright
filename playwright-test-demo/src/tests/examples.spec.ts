@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test';
-import { getJsonArray, getJsonObject } from '../utils/testdatareader';
+// import { getJsonArray, getJsonObject } from '../utils/testdatareader';
 import { customLogger } from '../logger/customLogger';
+import {TestDataGenerator} from '../utils/TestDataGenerator';
 // import {getJsonArray, getJsonObject, getTestData} from '../utils/testdatareader';   
 
 // test('get started link', async({page})=>{
@@ -77,5 +78,32 @@ import { customLogger } from '../logger/customLogger';
             }
 
         
+
+    });
+
+    test(`generate Random test Data`, ()=>{
+        //Random string
+        const randomString = TestDataGenerator.generateRandomString(10);
+        console.log(`Random String: ${randomString}`)
+
+        //Random alphanumberic string
+        const randomAlphanumeric = TestDataGenerator.generateRandomAlphanumeric(10)
+        console.log(`Random Alphanumeric: ${randomAlphanumeric}`)
+
+        //Random Integer between 1 and 100
+        const randomInt = TestDataGenerator.generateRandomInteger(1,100)
+        console.log(`Random Integer: ${randomInt}`)
+
+        //Random email
+        const randomEmail = TestDataGenerator.generateRandomEmail()
+        console.log(`Random Email: ${randomEmail}`)
+
+        //Random Phone Number
+        const randomPhone = TestDataGenerator.generateRandomPhone()
+        console.log(`Random Phone: ${randomPhone}`);
+
+        //Random Date
+        const randomDate = TestDataGenerator.generateRandomDate(new Date ('2020-09-12'), new Date ('2024-09-17'))
+        console.log(`Random Date: ${randomDate}`);
 
     });
